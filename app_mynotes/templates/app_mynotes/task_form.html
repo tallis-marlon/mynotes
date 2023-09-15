@@ -1,9 +1,9 @@
-<h3>Nova Tarefa</h3>
+<h3>Nova Anotação</h3>
 
 <form method="POST" action="">
     {% csrf_token %}
     <div class="form-group">
-        <label for="{{ form.title.id_for_label }}">Título Tarefa:</label>
+        <label for="{{ form.title.id_for_label }}">Título:</label>
         {{ form.title }}
     </div>
 
