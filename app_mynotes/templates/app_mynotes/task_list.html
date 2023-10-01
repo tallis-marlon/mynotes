@@ -9,6 +9,8 @@
     {% for task in object_list %}
     <tr>
         <td>{{task.title}}</td>
+        <td><a href="{% url 'task-update' task.id %}">Editar</a></td>
+        <td><a href="{% url 'task-delete' task.id %}">Excluir</a></td>
     </tr>
     {% empty %}
     <h3>Nenhum Item na Lista</h3>
