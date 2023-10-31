@@ -10,6 +10,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
 
+from django.http import Http404
+
 from .models import Task
 
 class CustomLoginView(LoginView):
@@ -51,7 +53,11 @@ class TaskDetail(LoginRequiredMixin, DetailView):
     model = Task
     context_object_name = 'task'
     template_name = 'app_mynotes/task.html'
-
+    def get_object(self, queryset=None):
+        task = super().get_object(queryset)
+        if task.user != self.request.user:
+            raise Http404("Você não tem permissão para ver essa página")
+        return task
 
 class TaskCreate(LoginRequiredMixin, CreateView):
     model = Task
