@@ -1,9 +1,18 @@
-<h1>Register</h1>
+{% extends 'app_mynotes/main.html' %}
+{% block content %}
 
-<form method="POST">
-    {% csrf_token %}
-    {{form.as_p}}
-    <input type="submit" value="Register">
-</form>
+<div class="header-bar">
+    <h1>Criar Conta</h1>
+</div>
 
-<p>Já tem uma conta? <a href="">Realizar Login</a></p>
+<div class="card-body">
+    <form method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value="Registrar">
+    </form>
+</div>
+
+<p>Já tem uma conta? <a href="{% url 'login' %}">Realizar Login</a></p>
+
+{% endblock content %}
